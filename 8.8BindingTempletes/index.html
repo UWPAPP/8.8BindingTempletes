@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>_8.8BindingTempletes</title>
+    <link href="lib/winjs-4.0.1/css/ui-light.css" rel="stylesheet" />
+    <script src="lib/winjs-4.0.1/js/base.js"></script>
+    <script src="lib/winjs-4.0.1/js/ui.js"></script>
+    <link href="css/default.css" rel="stylesheet" />
+    <script src="js/main.js"></script>
+</head>
+
+
+<body class="win-type-body">
+    <!--选择控件-->
+    <fieldset id="templateControlObject">
+        <legend>Object to edit</legend>
+        <select class="win-dropdown" id="templateControlObjectSelector">
+            <option value="0">Object 1</option>
+            <option value="1">Object 2</option>
+            <option value="2">Object 3</option>
+        </select>
+    </fieldset>
+
+    <!--选择要设置的对象信息-->
+    <fieldset id="templateControlInputText">
+        <legend>Text</legend>
+        <input class="win-textbox" type="text" id="templateControlInputTextInput" />
+    </fieldset>
+
+    <!--选择对象的颜色信息-->
+    <fieldset id="templateControlInputColor">
+        <legend>Color</legend>
+        <ol>
+            <li>
+                <label for="templateControlInputRed">
+                    Red:
+                </label>
+                <input class="win-textbox" type="text" id="templateControlInputRed" />
+            </li>
+            <li>
+                <label for="templateControlInputGreen">
+                    Green:
+                </label>
+                <input class="win-textbox" type="text" id="templateControlInputGreen" />
+            </li>
+            <li>
+                <label for="templateControlInputBlue">
+                    Blue:
+                </label>
+                <input class="win-textbox" type="text" id="templateControlInputBlue" />
+            </li>
+        </ol>
+    </fieldset>
+    
+    <!--模板信息-->
+    <div id="templateControlTemplate" data-win-control="WinJS.Binding.Template">
+        <!-- Bind both the background and the aria-label HTML attribute for the div -->
+        <div class="templateControlRenderedItem"
+             data-win-bind="style.background: color TemplateControl.toCssColor;
+                   this['aria-label']: text WinJS.Binding.setAttribute" role="article">
+            <ol>
+                <li data-win-bind="textContent: text"></li>
+                <li><span class="templateControlTemplateLabel">r: </span><span data-win-bind="textContent: color.r"></span></li>
+                <li><span class="templateControlTemplateLabel">g: </span><span data-win-bind="textContent: color.g"></span></li>
+                <li><span class="templateControlTemplateLabel">b: </span><span data-win-bind="textContent: color.b"></span></li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="templateControlRenderTarget">
+    </div>
+
+
+</body>
+</html>
